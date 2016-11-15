@@ -1,0 +1,23 @@
+<!-- OMY: Cours du https://karr.lewagon.org/lectures/rails/extra-02-rails-refacto/#/2/7 -->
+<% if notice %>
+  <% if flash[:notice] %>
+    <div class="alert alert-info fade in">
+      <button class="close" data-dismiss="alert">×</button>
+      <%= flash[:notice] %>
+    </div>
+  <% end %>
+
+  <% if flash[:alert] %>
+    <div class="alert alert-error fade in">
+      <button class="close" data-dismiss="alert">×</button>
+      <%= flash[:alert] %>
+    </div>
+  <% end %>
+<!-- OMY: Test du flash-sucess (a verifier) -->
+  <% if flash[:success] %>
+    <div class="alert alert-sucess fade in">
+      <button class="close" data-dismiss="alert">×</button>
+      <%= flash[:success] %>
+    </div>
+  <% end %>
+<% end %>
