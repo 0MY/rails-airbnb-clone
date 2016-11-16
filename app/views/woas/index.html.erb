@@ -1,0 +1,28 @@
+<h1>Woas#index</h1>
+
+
+
+
+
+<div class="container-cards">
+
+  <% @woas.each do |woa| %>
+
+    <div class="card">
+      <div><%= woa.title %></div>
+      <div><%= woa.type %></div>
+      <div><%= woa.description %></div>
+      <div><%= woa.price %></div>
+    </div>
+
+  <% end %>
+
+</div>
+
+
+
+
+
+
+
+
