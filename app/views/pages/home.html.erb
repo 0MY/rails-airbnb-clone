@@ -4,17 +4,14 @@
 
   <head>
 
-    <title>Locations d'oeuvres d'art - Tableaux, sculptures, photos et oeuvres numériques à louer - ARTbnb</title>
+    <title>Locations d'oeuvres d'art - Tableaux, sculptures, photos et oeuvres numériques à louer</title>
 
   </head>
 
 
-<div
-  id="header"
-  class="ARTbnb-header new  "
->
+<div container>
 
-<div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('background.jpg');">
+<div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)));">
   <div class="card-category">ARTBnB</div>
   <div class="card-description">
     <h2>ARTBnB</h2>
@@ -25,351 +22,24 @@
 </div>
 
 
-  <div class="title--sm text-center">
-      <button
-      class="btn btn-block search-btn--sm search-modal-trigger "
-      style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
-  <div class="tabs">
-    <a class="tab active" href="#">
-      <h3>Where?</h3>
-
-    </a>
-    <a class="tab" href="#">
-      <h3>When?</h3>
-
-    </a>
-    <a class="tab" href="#">
-      <h3>Art Lovers</h3>
-
-          <div id="icon-drawer-search"></div>
-          <span class="search-placeholder--sm">
-            Search
-          </span>
-      </button>
-      <a href="/" class="header-belo hide">
-        <span class="screen-reader-only">
-          ARTbnb
-        </span>
-      </a>
-  </div>
+<%= simple_form_for(:search, url: woas_path, method: :get) do |f| %>
+  <%= f.input :location %>
+  <%= f.submit %>
+<% end %>
 
 
-  <header class="regular-header clearfix hide-sm" id="new-header" role="banner">
-
-
-<div class="comp pull-left">
-  <a
-    href="/"
-    class="hdr-btn link-reset belo-container"
-    aria-label="Airbnb"
-  >
-    <i class="icon icon-pos--lower  icon-airbnb-alt h2 show-login"></i>
-    <i class="icon icon-pos--lower  icon-airbnb show-logout"></i>
-  </a>
-</div>
-
-
-
-<div class="comp pull-right show-login">
-  <a class="no-crawl hdr-btn link-reset header-avatar-trigger needsclick"
-     rel="nofollow"
-     href="#"
-     data-href="/dashboard"
-     data-href-host="/trips">
-    <span class="value_name margin-right--tiny hide-md"></span>
-    <div class="media-photo media-round user-profile-image header-icon icon-profile-alt-gray"></div>
-  </a>
-
-        <div class="js-your-trips-item panel-body link-reset hover-item no-crawl" data-href="/trips">
-          <div class="hover-item__content">
-            Mes réservations d'oeuvres
-          </div>
-        </div>
-        <a href="/city-hosts?source=hdr" class="hide city-host-button-md panel-body link-reset hover-item">
-          <div class="hover-item__content">
-            Art owners
-              <img class="beta-badge" src="https://a0.muscache.com/airbnb/static/magical_trips/guest/beta-badge-56a0d5bc185adfe79992a46991964070.png" alt="Beta" height="18" />
-          </div>
-</a>        <div class="js-wishlists-item panel-body link-reset hover-item no-crawl" data-href="/wishlists/my">
-          <div class="hover-item__content">
-            Wish Lists
-          </div>
-        </div>
-        <div class=" panel-body link-reset hover-item no-crawl" data-href="/users/edit">
-          <div class="hover-item__content">
-            Modifier le profil
-          </div>
-        </div>
-        <a href="/invite?r=3" class="travel-credit-item panel-body link-reset hover-item">
-          <div class="hover-item__content">
-            Crédit voyage
-          </div>
-</a>        <div class=" panel-body link-reset hover-item no-crawl" data-href="/users/notifications">
-          <div class="hover-item__content">
-            Paramètres du compte
-          </div>
-
-</a>        <div class=" panel-body link-reset hover-item no-crawl" data-href="/logout">
-          <div class="hover-item__content">
-            Déconnexion
-          </div>
-        </div>
-  </div>
-</div>
-
-
-  <div class="comp pull-right show-logout">
-  <a data-login-modal=""
-     href="/login"
-     data-redirect="redirect_params[action]=show&amp;redirect_params[af]=43720035&amp;redirect_params[c]=A_TC%3Ddjcpcrbhh5%26G_MT%3De%26G_CR%3D48278186975%26G_N%3Dg%26G_K%3Dair+b+n+b%26G_P%3D%26G_D%3Dc&amp;redirect_params[controller]=homepages&amp;redirect_params[expr]=r1&amp;redirect_params[gclid]=COjoht6IrdACFdXNGwod958A2w"
-     class="hdr-btn link-reset">
-    Connexion
-  </a>
-</div>
-<div class="comp pull-right show-logout">
-
-</div>
-
-
-  <div class="panel  drop-down-menu travel-credit-dropdown"></div>
-</div>
-
-
-
-<div id="js-header-help-menu">
-  <div class="comp pull-right help-trigger-wrapper no-border background-light-gray ">
-    <a class="hdr-btn js-help-toggle link-reset needsclick"
-       href="/help">
-      <span class="margin-right--tiny">Aide</span>
-      <i class="header-icon icon-lifesaver-alt-gray"></i>
-    </a>
-  </div>
-</div>
-
-
-
-<div class="hide js-header-business-travel comp pull-right background-light-gray">
-  <a class="hdr-btn link-reset needsclick"
-     href="/business/dashboard?s=nav">
-    <span class="margin-right--tiny hide-md">Business</span>
-    <i class="header-icon js-business-travel-icon icon-business-travel-gray"></i>
-  </a>
-</div>
-
-
-
-<div class="comp pull-right show-login">
-  <a class="needsclick no-crawl hdr-btn link-reset js-inbox-comp message-link"
-     href="#"
-     data-href="/inbox"
-     rel="nofollow">
-    <div class="inbox-icon-container text-center">
-      <span class="margin-right--tiny message-text-container">Messages</span>
-        <i class="alert-count unread-count text-center fade">0</i>
-    </div>
-  </a>
-
-  <div class="panel tooltip-top-right drop-down-menu notifications-dropdown hide">
-  </div>
-</div>
-
-
-<div class="comp pull-right show-trips show-login js-trips-menu-container hide">
-  <a class="needsclick no-crawl hdr-btn link-reset js-trips-comp trips-comp"
-     href="#"
-     rel="nofollow"
-     data-href="/trips">
-    <div class="inbox-icon-container text-center">
-      <span class="margin-right--tiny trip-text-container">Réservations d'oeuvres</span>
-        <i class="alert-count js-trips-unread-count text-center fade">0</i>
-    </div>
-  </a>
-
-  <div class="panel tooltip-top-right drop-down-menu dark-caret trips-dropdown hide">
-  </div>
-</div>
-
-
-<div class="comp pull-right show-host">
-  <a class="needsclick host-icon-wrapper no-crawl hdr-btn link-reset js-host-menu-icon"
-     href="#"
-     rel="nofollow"
-     data-href="/dashboard">
-    <span class="margin-right--tiny host-text-container">
-      Owner
-    </span>
-        <i class="alert-count js-host-item-count listing-count text-center fade">0</i>
-  </a>
-
-  <div class="panel tooltip-top-right drop-down-menu host-tooltip--new">
-    <div class="hover-item panel-body relist-your-space hide">
-      <a href="#" class="link-reset click-area">
-        <div class="cta-container va-container va-container-v" >
-          <div class="va-middle">
-            <div class="cta-text">
-              Terminer mon annonce
-            </div>
-            <div class="cta-text-v3-reactivate hide">
-              Réactiver
-            </div>
-            <div class="progress">
-              <div class="progress-bar" >
-              </div>
-            </div>
-          </div>
-        </div>
-</a>    </div>
-
-        <div class=" panel-body link-reset hover-item origin-item js-host-dashboard-link no-crawl" data-href="/dashboard">
-          <div class="hover-item__content">
-            Tableau de bord
-            <i class="alert-count js-pending-request-count--inline text-center fade">0</i>
-          </div>
-        </div>
-        <div class=" panel-body link-reset hover-item origin-item js-host-calendar-link hide no-crawl" data-href="/rooms">
-          <div class="hover-item__content">
-            Calendrier
-
-          </div>
-        </div>
-        <div class=" panel-body link-reset hover-item origin-item js-host-manage-listings-link no-crawl" data-href="/rooms">
-          <div class="hover-item__content">
-            Gérer mes annonces
-            <i class="alert-count listing-count listing-count--inline text-center fade">0</i>
-          </div>
-        </div>
-        <a href="/rooms/new" class=" panel-body link-reset hover-item origin-item js-host-list-your-space-link">
-          <div class="hover-item__content">
-            Publiez votre annonce
-
-          </div>
-</a>        <div class=" panel-body link-reset hover-item origin-item js-host-my-reservations-link no-crawl" data-href="/my_reservations">
-          <div class="hover-item__content">
-            Mes réservations
-
-          </div>
-        </div>
-        <div class=" panel-body link-reset hover-item origin-item js-host-transaction-history-link no-crawl" data-href="/users/transaction_history">
-          <div class="hover-item__content">
-            Historique des transactions
-
-          </div>
-        </div>
-        <div class=" panel-body link-reset hover-item origin-item hide item-refer-hosts js-host-refer-hosts-link no-crawl" data-href="/refer?r=41">
-          <div class="hover-item__content">
-            Recommander des owners
-            <span class="label label-pink label-new">Nouveau</span>
-          </div>
-        </div>
-        <div class=" panel-body link-reset hover-item origin-item js-host-reviews-link no-crawl" data-href="/users/reviews">
-          <div class="hover-item__content">
-            Commentaires
-
-          </div>
-        </div>
-        <div class=" panel-body link-reset hover-item origin-item hide item-host-assist js-host-assist-link no-crawl" data-href="/host-assist">
-          <div class="hover-item__content">
-            Assistance owners
-
-          </div>
-        </div>
-        <a href="/hospitality" class=" panel-body link-reset hover-item origin-item js-host-hospitality-link">
-          <div class="hover-item__content">
-
-
-          </div>
-</a>        <a href="/experience-host" class=" panel-body link-reset hover-item origin-item hide js-host-experience-host-link">
-          <div class="hover-item__content">
-            Organisation d'expériences
-            <span class="label label-pink label-new">Nouveau</span>
-          </div>
-</a>  </div>
-</div>
-
-
-
-
-  <div class="comp pull-right not-launched comp-hire-a-host">
-  <a class="hdr-btn link-reset lys-link hire-a-host-link"
-     href="/co-hosting?ref=header_button">
-    <span class="btn btn-small btn-hire-a-host" />
-  </a>
-  <div class="panel  drop-down-menu hire-a-host-dropdown">
-
-  </div>
-</div>
-
-
-<div class="comp pull-right hide-host comp-become-a-host ">
-  <a class="hdr-btn link-reset lys-link js-become-a-host-link comp-become-a-host__link"
-     href="/rooms/new?from_nav=1&link=1">
-    <span class="btn btn-small btn-become-a-host">
-      Partagez vos oeuvres
-      <i clasvress="icon icon-gift icon-host-referral-gift js-host-referral-gift-icon hide "></i>
-    </span>
-  </a>
-  <div class="panel tooltip-top-right drop-down-menu hide js-become-a-host-dropdown">
-    <a class="link-reset panel-body hover-item hide js-become-a-host-lys" href="/become-a-host?from_nav=1&link=2">
-      <div class="hover-item__content">
-        Publiez votre annonce
-      </div>
-    </a>
-    <a class="link-reset js-become-a-host-tooltip panel-body hover-item" href="/rooms/new?from_nav=1&link=3">
-      <div class="tooltip-content">
-        Louez vos oeuvres
-      </div>
-    </a>
-    <a class="link-reset panel-body hover-item js-become-a-host-why-host hide" href="/host?from_nav=1">
-      <div class="hover-item__content">
-        Louez vos oeuvres : comment ça marche ?
-      </div>
-    </a>
-  </div>
-</div>
-
-
-      <div class="comp pull-left back-to-search-results-wrapper">
-</div>
-
-
-
-</header>
-
-
-    </main>
-
-      <div id="footer-one"></div>
-      <div id="footer" class="container-brand-light footer-surround footer-container">
-
-
-    <div class="row row-condensed">
-      <div class="language-curr-picker col-md-2">
-        <div class="clearfix">
-          <div class="language-picker col-sm-6 col-md-12"></div>
-            <div class="currency-picker col-sm-6 col-md-12"></div>
-          <div class="cx-number"></div>
-
-
-      </div>
-
-      <div class="col-md-2 col-md-offset-1 hide-sm">
-        <h2 class="h5">ARTbnb</h2>
-        <ul class="list-layout">
-            <li><a href="/about/about-us" class="link-contrast">À propos</a></li>
-            <li><a href="/careers" class="link-contrast">Carrières</a></li>
-            <li><a href="/press/news" class="link-contrast">Presse</a></li>
-            <li><a href="/policies" class="link-contrast">Règles</a></li>
-            <li><a href="/help?from=footer" class="link-contrast">Aide</a></li>
-        </ul>
-      </div>
-
+<% Woa::TYPES.each do |category| %>
+  <%= link_to woas_path(search: { category: category }) do %>
+    <img src="http://placehold.it/150x150" alt="">
+  <% end %>
+<% end %>
 
 
       <div class="col-md-2 col-md-offset-1 hide-sm">
         <h2 class="h5">Location d'oeuvres</h2>
         <ul class="list-layout">
             <li><a href="/host" class="link-contrast">Louer vos oeuvres</a></li>
-            <li><a href="/hospitality" class="link-contrast">Hospitalité</a></li>
+            <li><a href="/hospitality" class="link-contrast">Partagez vos collections</a></li>
             <li><a href="/help/responsible-hosting" class="link-contrast">Location responsable</a></li>
         </ul>
       </div>
@@ -382,7 +52,7 @@
         <link itemprop="url" href="https://www.airbnb.fr">
         <meta itemprop="logo" content="https://a2.muscache.com/airbnb/static/logos/belo-200x200-4d851c5b28f61931bf1df28dd15e60ef.png">
 
-        <li><a href="/terms" class="link-contrast">Conditions générales et confidentialité</a></li>
+
         <div class="hide-sm">
           <li><a href="/sitemaps" class="link-contrast">Plan du site</a></li>
             <li>
