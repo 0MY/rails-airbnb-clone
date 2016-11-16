@@ -1,0 +1,19 @@
+<!-- Rating mean + comment -->
+
+  <% if @booking.first != nil%>
+    <% @woa.booking do |dose| %>
+    <% if dose.persisted? %>
+      <li>
+        <%= dose.description %> <%= dose.ingredient.name %>
+      </li>
+    <% end %>
+  <% end %>
+</ul>
+
+<!-- TODO Booking bar -->
+<%= simple_form_for(:search, url: new_woa_booking_path, method: :post) do |f| %>
+ <%= f.input :book_start_at %>
+ <%= f.input :book_end_at %>
+ <%= f.input :location %>
+ <%= f.submit %>
+<% end %>

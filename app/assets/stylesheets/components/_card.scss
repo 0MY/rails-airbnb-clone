@@ -1,8 +1,10 @@
 .card {
   width: 60%;
   height: 180px;
-  background-color: red;
+  background-color: #CCCCCC;
   margin-bottom: 20px;
+  box-shadow: 20px
+
 }
 
 .container-cards {
@@ -12,4 +14,6 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+  font-color: white;
+
 }

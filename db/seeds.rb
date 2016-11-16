@@ -13,7 +13,7 @@ Woa.destroy_all
 NB_WOA = 20
 # NB_BOOKING = 3
 MAX_RATING = 5
-MAX_PRICE = 1_000_000
+MAX_PRICE = 1_000
 
 Faker::Config.locale = "fr"
 
@@ -29,8 +29,8 @@ NB_WOA.times do |woa_id|
                      location: woa_location,
                      lat: rand(20.00..40.00),
                      lng: rand(20.00..40.00),
-                     price: rand(1_000..MAX_PRICE),
-                     deposit: rand(1_000..MAX_PRICE / 10),
+                     price: rand(3..MAX_PRICE),
+                     deposit: rand(500..MAX_PRICE / 10),
                      rent_start_at: rent_start_date,
                      rent_end_at: Faker::Date.between(rent_start_date, "2017-12-31"),
                      owner_id: rand(User.first.id..User.last.id),
