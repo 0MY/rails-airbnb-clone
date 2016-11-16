@@ -1,4 +1,21 @@
-<h1>Woas#index</h1>
+<h1>find your Work of Art</h1>
+
+
+
+
+<form class="form-inline">
+  <div class="form-group">
+    <label for="exampleInputName2">Category</label>
+    <input type="text" class="form-control" id="exampleInputName2" placeholder="sculptur">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputEmail2">Location</label>
+    <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Paris">
+  </div>
+  <button type="submit" class="btn btn-default">find</button>
+</form>
+
+
 
 
 
@@ -9,10 +26,11 @@
   <% @woas.each do |woa| %>
 
     <div class="card">
-      <div><%= woa.title %></div>
-      <div><%= woa.type %></div>
+      <h2><%= woa.title %></h2>
+      <br>
+      <div><%= woa.category %></div>
       <div><%= woa.description %></div>
-      <div><%= woa.price %></div>
+      <p><%= woa.price %> $</p>
     </div>
 
   <% end %>

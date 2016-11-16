@@ -13,7 +13,7 @@ class WoasController < ApplicationController
     end
   end
 
-  def show
+   def show
     @woa = Woa.find(params[:id])
     @booking = Booking.new
   end
