@@ -12,6 +12,11 @@ class WoasController < ApplicationController
       @woas = Woa.all
     end
   end
+
+  def show
+    @woa = Woa.find(params[:id])
+    @booking = Booking.new
+  end
 end
 
 # simpleform for :search url: woas_path method: get do |f|

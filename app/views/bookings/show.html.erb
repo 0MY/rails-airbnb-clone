@@ -1,0 +1,20 @@
+<!-- A MODIFIER ET TESTER -->
+
+<ul>
+  <% @woa.bookings.each do |booking| %>
+    <% if booking.persisted? %>
+      <li>
+        <%= booking.description %> <%= booking.ingredient.name %>
+        <%= link_to "&times;".html_safe, booking, method: :delete %>
+      </li>
+    <% end %>
+  <% end %>
+</ul>
+
+<hr>
+
+<%= simple_form_for [@woa, @booking] do |f| %>
+  <%= f.association :ingredient %>
+  <%= f.input :description %>
+  <%= f.button :submit %>
+<% end %>
