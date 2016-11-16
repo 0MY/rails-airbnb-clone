@@ -1,0 +1,18 @@
+woa#show
+
+bannière
+titre
+description
+prix
+avatar
+
+booking bar: lien vers booking#new et #create ?
+
+détails (filtres des taille, wifi, etc.)
+
+moyenne des ratings
+liste de tous les ratings et comments
+
+prix total = prix par jour * nbre de jours résa
+
+caution

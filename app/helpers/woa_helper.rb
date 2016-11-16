@@ -1,0 +1,2 @@
+module WoaHelper
+end
