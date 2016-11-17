@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161116134517) do
+ActiveRecord::Schema.define(version: 20161117142502) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,7 +61,6 @@ ActiveRecord::Schema.define(version: 20161116134517) do
     t.text     "description"
     t.integer  "price"
     t.integer  "deposit"
-    t.text     "location"
     t.date     "rent_start_at"
     t.date     "rent_end_at"
     t.integer  "owner_id"
@@ -79,6 +78,7 @@ ActiveRecord::Schema.define(version: 20161116134517) do
     t.float    "lat"
     t.float    "lng"
     t.string   "category"
+    t.string   "city"
     t.index ["owner_id"], name: "index_woas_on_owner_id", using: :btree
   end
 

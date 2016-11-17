@@ -9,12 +9,12 @@
 <p>Prix: <%= @woa.price %></p>
 <p>Caution: <%= @woa.deposit %></p>
 <hr>
-<h2>À propos de ce logement</h2>
+<h2>À propos de cette oeuvre d'art</h2>
 <p><%= @woa.description %></p>
-<p>Où le récupérer: <%= @woa.location %></p>
+<p>Où le récupérer: <%= @woa.city %></p>
 <!-- Lien type mailto: vers "Contacter l'Hôte" -->
 <hr>
-<h3>Détails de l'Oeuvre d'Art</h3>
+<h3>Détails et informations complémentaires</h3>
 <p>Dimensions:
 <% case @woa.size %>
 <% when "S" %>

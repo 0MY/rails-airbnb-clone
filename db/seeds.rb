@@ -20,13 +20,12 @@ Faker::Config.locale = "fr"
 Woa.destroy_all
 NB_WOA.times do |woa_id|
 
-  woa_location = Faker::Address.street_address + ", " + Faker::Address.zip_code + " " + Faker::Address.city
   rent_start_date = Faker::Date.between("2016-11-20", "2017-12-31")
 
   woa = Woa.create!( title: Faker::Commerce.product_name,
                      description: Faker::Lorem.paragraph(1, true, 2),
                      category: Woa::TYPES.sample,
-                     location: woa_location,
+                     city: Faker::Address.city,
                      lat: rand(20.00..40.00),
                      lng: rand(20.00..40.00),
                      price: rand(3..MAX_PRICE),
