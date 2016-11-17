@@ -1,39 +1,53 @@
-<h1>find your Work of Art</h1>
+<div class="container-fluid">
+  <h1>find your Work of Art</h1>
 
+  <%= simple_form_for(:search, url: woas_path, method: :get) do |f| %>
+  <%= f.input :date_start, as: :date %>
+  <%= f.input :date_end, as: :date %>
+  <%= f.input :location %>
+  <%= f.submit %>
+<% end %>
 
-
-
-<form class="form-inline">
-  <div class="form-group">
-    <label for="exampleInputName2">Category</label>
-    <input type="text" class="form-control" id="exampleInputName2" placeholder="sculptur">
-  </div>
-  <div class="form-group">
-    <label for="exampleInputEmail2">Location</label>
-    <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Paris">
-  </div>
-  <button type="submit" class="btn btn-default">find</button>
-</form>
-
-
-
-
-
-
-
-<div class="container-cards">
-
-  <% @woas.each do |woa| %>
-
-    <div class="card">
-      <div><%= woa.title %></div>
-      <div><%= woa.category %></div>
-      <div><%= woa.description %></div>
-      <p><%= woa.price %> $</p>
+  <div class="row">
+    <div class="col-sm-8">
+      <div class="row">
+        <% @woas.each do |woa| %>
+          <div class="card col-sm-6">
+            <div><%=link_to woa_path(id: woa.id) do%>
+              <img src="http://placehold.it/400x300" alt="">
+              <% end %>
+            </div>
+            <div><%= woa.title %></div>
+            <div><%= woa.category %></div>
+            <div><%= woa.description %></div>
+            <div><%= woa.location %></div>
+            <p><%= woa.price %> $</p>
+          </div>
+        <% end %>
+      </div>
     </div>
+    <div class="col-sm-4">
+      <div id="map" style="width: 100%; height: 600px;"></div>
 
-  <% end %>
-
+      <% content_for(:after_js) do %>
+        <%= javascript_tag do %>
+          $(document).ready(function() {
+            var handler = Gmaps.build('Google');
+            handler.buildMap({ internal: { id: 'map' } }, function() {
+              markers = handler.addMarkers(<%= raw @hash.to_json %>);
+              handler.bounds.extendWith(markers);
+              handler.fitMapToBounds();
+              if (markers.length == 0) {
+                handler.getMap().setZoom(2);
+              } else if (markers.length == 1) {
+                handler.getMap().setZoom(14);
+              }
+            });
+          });
+        <% end %>
+      <% end %>
+    </div>
+  </div>
 </div>
 
 

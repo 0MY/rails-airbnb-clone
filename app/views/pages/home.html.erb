@@ -1,83 +1,59 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 
-<html lang="fr"
-
+<html lang="fr">
   <head>
-
     <title>Locations d'oeuvres d'art - Tableaux, sculptures, photos et oeuvres numériques à louer</title>
-
   </head>
 
+  <body>
+    <div class="container">
+      <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%=asset_path 'background'%>);">
+        <h2>ARTBnB</h2>
+         <p>Louez des oeuvres d'art uniques et partagez votre passion</p>
+      </div>
+      <a class="card-link" href="#" ></a>
+    </div>
 
-<div container>
+    <div class="container">
+      <%= simple_form_for(:search, url: woas_path, method: :get) do |f| %>
+       <%= f.input :date_start, label: "Début de la réservation", as: :date %>
+       <%= f.input :date_end, label: "fin de la réservation", as: :date %>
+       <%= f.input :location %>
+       <%= f.submit %>
+      <% end %>
+    </div>
 
-<div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)));">
-  <div class="card-category">ARTBnB</div>
-  <div class="card-description">
-    <h2>ARTBnB</h2>
-    <p>Louez des oeuvres d'art uniques et partagez votre passion</p>
-  </div>
-  <img class="card-user avatar" src="user.jpg">
-  <a class="card-link" href="#" ></a>
-</div>
+    <div class="container-flex">
+      <% Woa::TYPES.each do |category| %>
+        <%= link_to woas_path(search: { category: category }) do %>
+          <div class="woa-card">
+            <img src="http://placehold.it/550x300" alt="">
+          </div>
+        <% end %>
+      <% end %>
+    </div>
 
-
-<%= simple_form_for(:search, url: woas_path, method: :get) do |f| %>
-  <%= f.input :location %>
-  <%= f.submit %>
-<% end %>
-
-
-<% Woa::TYPES.each do |category| %>
-  <%= link_to woas_path(search: { category: category }) do %>
-    <img src="http://placehold.it/150x150" alt="">
-  <% end %>
-<% end %>
-
-
+    <div class="container">
       <div class="col-md-2 col-md-offset-1 hide-sm">
         <h2 class="h5">Location d'oeuvres</h2>
         <ul class="list-layout">
-            <li><a href="/host" class="link-contrast">Louer vos oeuvres</a></li>
-            <li><a href="/hospitality" class="link-contrast">Partagez vos collections</a></li>
-            <li><a href="/help/responsible-hosting" class="link-contrast">Location responsable</a></li>
+           <li><a href="/host" class="link-contrast">Louer vos oeuvres</a></li>
+           <li><a href="/partage_des_collections" class="link-contrast">Partagez vos collections</a></li>
+           <li><a href="/help/responsible-hosting" class="link-contrast">Location responsable</a></li>
         </ul>
       </div>
     </div>
 
-
-      </ul>
+    <div>
       <ul class="list-layout list-inline icon-list right-list" itemscope itemtype="http://schema.org/Organization">
-
-        <link itemprop="url" href="https://www.airbnb.fr">
-        <meta itemprop="logo" content="https://a2.muscache.com/airbnb/static/logos/belo-200x200-4d851c5b28f61931bf1df28dd15e60ef.png">
-
-
-        <div class="hide-sm">
-          <li><a href="/sitemaps" class="link-contrast">Plan du site</a></li>
-            <li>
-              <a href="https://www.facebook.com" class="link-contrast footer-icon-container" itemprop="sameAs" target="_blank">
-                <span class="screen-reader-only">Facebook</span>
-                <i class='icon footer-icon icon-facebook'></i>
-</a>            </li>
-
-            <li>
-              <a href="https://twitter.com" class="link-contrast footer-icon-container" itemprop="sameAs" target="_blank">
-                <span class="screen-reader-only">Twitter</span>
-                <i class='icon footer-icon icon-twitter'></i>
-</a>            </li>
-            <li>
-              <a href="https://instagram.com" class="link-contrast footer-icon-container" itemprop="sameAs" target="_blank">
-                <span class="screen-reader-only">Instagram</span>
-                <i class='icon footer-icon icon-instagram'></i>
-</a>            </li>
-        </div>
+      <link itemprop="url" href="https://www.airbnb.fr">
+      <meta itemprop="logo" content="https://a2.muscache.com/airbnb/static/logos/belo-200x200-4d851c5b28f61931bf1df28dd15e60ef.png">
       </ul>
     </div>
-</footer>
 
-      </div>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 
-  </body>
+ </body>
 </html>

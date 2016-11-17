@@ -27,8 +27,6 @@ NB_WOA.times do |woa_id|
                      description: Faker::Lorem.paragraph(1, true, 2),
                      category: Woa::TYPES.sample,
                      location: woa_location,
-                     lat: rand(20.00..40.00),
-                     lng: rand(20.00..40.00),
                      price: rand(3..MAX_PRICE),
                      deposit: rand(500..MAX_PRICE / 10),
                      rent_start_at: rent_start_date,

@@ -1,21 +1,30 @@
 class WoasController < ApplicationController
   def index
 
+    @woas = Woa.where.not(latitude: nil, longitude: nil)
+
     if params[:search]
-      if params[:search][:date]
-        @woas = Woa.where(date: params[:search][:date])  #résultats filtrés par le form cherch ou les categories de la page home
-      elsif params[:search][:category]
-        @woas = Woa.where(category: params[:search][:category])
-        # @woas = Woa.where(category: "paint")
+      if params[:search][:category]
+        @woas = @woas.where(category: params[:search][:category])
       end
-    else
-      @woas = Woa.all
+      if params[:search][:location]
+        @woas = @woas.near(params[:search][:location], 30)  #résultats filtrés par le form cherch ou les categories de la page home
+      end
     end
+
+    @hash = Gmaps4rails.build_markers(@woas) do |woa, marker|
+      marker.lat woa.latitude
+      marker.lng woa.longitude
+      # marker.infowindow render_to_string(partial: "/woas/map_box", locals: { woa: woa })
+    end
+
+
   end
 
-   def show
+  def show
     @woa = Woa.find(params[:id])
     @booking = Booking.new
+
   end
 end
 
