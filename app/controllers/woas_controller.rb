@@ -4,11 +4,9 @@ class WoasController < ApplicationController
        if params[:search]
         # filtre par ville et dates compatibles
         @woas = Woa.where(city: params[:search][:location])
-        byebug
         @woas.select { | w | can_book?(w, params[:search][:book_start], params[:search][:book_end]) }
       elsif params[:category]
         @woas = Woa.where(category: params[:category])
-        # @woas = Woa.where(category: "paint")
       else
         @woas = Woa.all
       end
@@ -16,6 +14,9 @@ class WoasController < ApplicationController
 
   def show
     @woa = Woa.find(params[:id])
+    sum = 0
+    @woa.bookings.each { | b | sum += b.owner_rating }
+    @mean_rating = (sum / @woa.bookings.count).floor
     @booking = Booking.new
   end
 

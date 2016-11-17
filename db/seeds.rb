@@ -23,13 +23,13 @@ NB_WOA.times do |woa_id|
   rent_start_date = Faker::Date.between("2016-11-20", "2017-12-31")
 
   woa = Woa.create!( title: Faker::Commerce.product_name,
-                     description: Faker::Lorem.paragraph(1, true, 2),
+                     description: Faker::Lorem.paragraph(5, true, 20),
                      category: Woa::TYPES.sample,
                      city: Faker::Address.city,
                      lat: rand(20.00..40.00),
                      lng: rand(20.00..40.00),
-                     price: rand(3..MAX_PRICE),
-                     deposit: rand(500..MAX_PRICE / 10),
+                     price: rand(3..MAX_PRICE/10)*10,
+                     deposit: 500 + rand(0..5) *100,
                      rent_start_at: rent_start_date,
                      rent_end_at: Faker::Date.between(rent_start_date, "2017-12-31"),
                      owner_id: rand(User.first.id..User.last.id),

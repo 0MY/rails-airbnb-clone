@@ -2,61 +2,33 @@
  * CSS code specific to home page
  * (margin/padding adjustments)
  * ------------------------------------- */
- html, body
- {
-     margin: 0;
-     padding: 0;
-     height: 100%;
-     width: 100%;
- }
+ .banner{
+ background-position: center center;
+ background-size: cover;
+ background-repeat: no-repeat;
+ color: white;
+ text-align: center;
+ height: 500px;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+}
+
+.woa-card {
+ margin: 15px;
+ width: 410px;
+}
+
+.container-flex {
+ display: flex;
+ flex-wrap: wrap;
+ justify-content: space-around;
+ align-items: center;
+ padding: 100px;
+}
 
 .tabs {
-  background: #53443F;
-  display: flex;
-  padding: 10px 10px 0 10px
+ background: #53443F ;
+ display: flex;
+ padding: 10px 10px 0 10px
 }
-.tabs a {
-  color: white;
-}
-.tabs a:hover {
-  cursor: pointer;
-  text-decoration: none;
-  opacity: 0.8;
-}
-.tabs h3 {
-  font-size: 17px;
-  font-weight: bold;
-  margin-top: 0;
-}
-.tabs p {
-  opacity: 0.5;
-  margin-bottom: 0;
-}
-.tab {
-  background: #756A66;
-  flex: 0 0 25%;
-  text-align: center;
-  padding: 20px 0;
-}
-.tab:first-child {
-  border-radius: 10px 0 0 0;
-}
-.tab:last-child {
-  border-radius: 0 10px 0 0;
-}
-.tab.active {
-  background: white;
-  color: black;
-}
-
-.form-inline {
-  margin-bottom: 20px;
-  align-items: center;
-
-}
-
-
-
-
-
-
