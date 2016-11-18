@@ -11,7 +11,6 @@ gem 'redis'
 gem "cloudinary", "1.1.0"
 gem "attachinary", github: "assembler/attachinary"
 gem "jquery-fileupload-rails"
-gem "coffee-rails"
 
 gem 'sass-rails'
 gem 'jquery-rails'
@@ -23,6 +22,13 @@ gem 'autoprefixer-rails'
 gem 'devise'
 gem 'omniauth-facebook'
 gem 'faker'
+gem "geocoder"
+gem "coffee-rails"
+gem "gmaps4rails"
+
+source 'https://rails-assets.org' do
+  gem "rails-assets-underscore"
+end
 
 group :development, :test do
   gem 'binding_of_caller'

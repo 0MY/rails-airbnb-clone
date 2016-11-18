@@ -44,7 +44,7 @@
       <%= simple_form_for(:book, url: woa_bookings_path(:id), method: :post) do |f| %>
         <%= f.input :book_start, label: 'Date de départ de la réservation' %>
         <%= f.input :book_end, label: 'Date de fin de la réservat ion'  %>
-        <%= f.input :location, label: 'City'  %>
+        <%= f.input :location, label: 'Ville'  %>
         <%= f.submit %>
       <% end %>
     </div>

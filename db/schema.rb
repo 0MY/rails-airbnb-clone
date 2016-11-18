@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161117152048) do
-
+ActiveRecord::Schema.define(version: 20161118103150) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -91,10 +90,10 @@ ActiveRecord::Schema.define(version: 20161117152048) do
     t.boolean  "needs_alarm"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
-    t.float    "lat"
-    t.float    "lng"
     t.string   "category"
     t.string   "city"
+    t.float    "latitude"
+    t.float    "longitude"
     t.index ["owner_id"], name: "index_woas_on_owner_id", using: :btree
   end
 

@@ -1,16 +1,22 @@
 class WoasController < ApplicationController
 
   def index
-       #test de présence du :search ou du :category renvoyé par la page home
-       if params[:search]
-        # filtre par ville et dates compatibles
-        @woas = Woa.where(city: params[:search][:location])
-        @woas.select { | w | can_book?(w, params[:search][:book_start], params[:search][:book_end]) }
-      elsif params[:category]
-        @woas = Woa.where(category: params[:category])
-      else
-        @woas = Woa.all
+    @woas = Woa.where.not(latitude: nil, longitude: nil)
+
+    if params[:search]
+      if params[:search][:category]
+        @woas = @woas.where(category: params[:search][:category])
       end
+      if params[:search][:location]
+        @woas = @woas.near(params[:search][:location], 30)  #résultats filtrés par le form cherch ou les categories de la page home
+      end
+    end
+
+    @hash = Gmaps4rails.build_markers(@woas) do |woa, marker|
+      marker.lat woa.latitude
+      marker.lng woa.longitude
+      # marker.infowindow render_to_string(partial: "/woas/map_box", locals: { woa: woa })
+    end
   end
 
   def show
@@ -33,9 +39,3 @@ class WoasController < ApplicationController
     end
   end
 end
-
-
-
-
-
-
