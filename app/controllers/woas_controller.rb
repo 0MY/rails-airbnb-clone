@@ -23,8 +23,12 @@ class WoasController < ApplicationController
     @woa = Woa.find(params[:id])
     sum = 0
     @woa.bookings.each { | b | sum += b.owner_rating }
-    @mean_rating = (sum / @woa.bookings.count).floor
-    @booking = Booking.new
+    if @woa.bookings.count = 0
+      @mean_rating = 0
+    else
+      @mean_rating = (sum / @woa.bookings.count).floor
+    end
+      @booking = Booking.new
   end
 
   def can_book?(woa, new_start_book, new_end_book)
