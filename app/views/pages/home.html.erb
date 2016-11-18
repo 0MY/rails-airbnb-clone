@@ -28,8 +28,11 @@
     <div class="container-flex">
       <% Woa::TYPES.each do |category| %>
         <%= link_to woas_path(search: { category: category }) do %>
-          <div class="woa-card">
-            <img src="http://placehold.it/550x300" alt="">
+          <div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('http://images.lesechos.fr/archives/2012/LesEchos/21101/ECH21101176_1.jpg');">
+            <div class="banner-content">
+              <h1><%= category %></h1>
+              <p>Very cool stuff, useful and smart</p>
+            </div>
           </div>
         <% end %>
       <% end %>
@@ -37,17 +40,13 @@
 
     <div class="container">
       <div class="col-md-2 col-md-offset-1 hide-sm">
-        <h2 class="h5">Location d'oeuvres</h2>
+        <h2 class="h5">Location d'oeuvres d'art</h2>
         <ul class="list-layout">
            <li><a href="/host" class="link-contrast">Louer vos oeuvres</a></li>
            <li><a href="/partage_des_collections" class="link-contrast">Partagez vos collections</a></li>
            <li><a href="/help/responsible-hosting" class="link-contrast">Location responsable</a></li>
         </ul>
       </div>
-    </div>
-
-    <div>
-
     </div>
 
     <div>
