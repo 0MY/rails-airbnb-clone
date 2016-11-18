@@ -10,7 +10,10 @@ Booking.destroy_all
 Woa.destroy_all
 
 
-NB_WOA = 20
+tab_img = ["http://www.expointhecity.com/wp-content/uploads/2016/07/sculpture-on-the-move-2.jpg",
+"http://www.ufunk.net/wp-content/uploads/2016/02/Georg-Scheele-marble-sculpture-1.jpg", "http://cdn.pmnewsnigeria.com/wp-content/uploads/2015/11/White_Sculpture.jpg", "http://www.laboiteverte.fr/wp-content/uploads/2015/11/figurine-sculpture-classique-02.jpg", "http://modock-sculpture-bronze.com/wp-content/uploads/2014/05/sculpture-bronze-femme-corps-nu-profil.jpg", "http://www.ounimam.fr/wp-content/uploads/2013/12/autoportrait-Van-Gogh-825x1024.jpg", "http://www.atypique.co/wp-content/uploads/2011/08/shaka_peinture_art_7.jpg", "http://jmmalard1.free.fr/touareg01.JPG", "http://artwall-and-co.com/759-thickbox_default/tableau-pop-art-zebra-flash.jpg", "http://i2.cdscdn.com/pdt2/6/8/5/1/700x700/gen2009944416685/rw/art-deco-peinture-huile-sur-toile-fait-main.jpg", "https://s-media-cache-ak0.pinimg.com/736x/cd/a1/1b/cda11b9b5071271a9a6d68018c25a847.jpg", "http://mediation.centrepompidou.fr/education/ressources/ENS-mouvement_images/images/xl/05-Jeppe-Hein.jpg", "http://artafrica.fr/7622/statuette-protectrice-chamba.jpg", "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Statuette_Holoholo-Mus%C3%A9e_ethnologique_de_Berlin.jpg/832px-Statuette_Holoholo-Mus%C3%A9e_ethnologique_de_Berlin.jpg",]
+
+NB_WOA = tab_img.count
 # NB_BOOKING = 3
 MAX_RATING = 5
 MAX_PRICE = 1_000
@@ -42,17 +45,9 @@ NB_WOA.times do |woa_id|
                      needs_glass: rand(0..1),
                      needs_alarm: rand(0..1),
                      needs_pedestal: rand(0..1)
-                    )
-  # byebugrails
-  # rand(0..NB_BOOKING).times do |j|
-  #   rev = woa.reviews.create!(content: Faker::Lorem.paragraph(1, true, 2),
-  #                             rating: rand(0..MAX_RATING),
-  #                             restaurant_id: rand(woa_id)
-  #                             )
+                     )
+  woa.photo_url = tab_img[woa_id]
 
-    # Note: plutot que le .create!, on aurait pu faire un:
-    # rev = woa.review.create!(...)
-    # rev.save
-  # end
+
 end
 

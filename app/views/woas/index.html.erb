@@ -16,7 +16,7 @@
             <div class="col-sm-4">
               <div class="card">
                 <div><%=link_to woa_path(id: woa.id) do%>
-                 <img src=<%=asset_path "NeonElectronics.jpg"%> style= "height:50px; width:100px; alt="">
+                 <%= cl_image_tag woa.photo.path, width: 100, height: 150 %>
                   <% end %>
                 </div>
                 <div><%= woa.title %></div>
