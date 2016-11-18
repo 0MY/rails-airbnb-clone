@@ -5,6 +5,9 @@ class Woa < ApplicationRecord
   belongs_to :owner, class_name: 'User'
   has_many :bookings, foreign_key: 'woa_id', dependent: :destroy
 
+  geocoded_by :location
+  after_validation :geocode, if: :location_changed?
+
   # validates :title, :price, :type, :rent_start_at, presence: true
 
   ## copied from yelp

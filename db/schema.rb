@@ -94,6 +94,8 @@ ActiveRecord::Schema.define(version: 20161117152048) do
     t.float    "lat"
     t.float    "lng"
     t.string   "category"
+    t.float    "latitude"
+    t.float    "longitude"
     t.index ["owner_id"], name: "index_woas_on_owner_id", using: :btree
   end
 

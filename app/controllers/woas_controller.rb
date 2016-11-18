@@ -1,21 +1,29 @@
 class WoasController < ApplicationController
- def index
-      #test de présence du :search ou du :category renvoyé par la page home
-      if params[:search]
-       # filtre par ville et dates compatibles
-       @woas = Woa.where(city: params[:search][:location])
-       @woas.select { | w | can_book?(w, params[:search][:book_start], params[:search][:book_end]) }
-     elsif params[:category]
-       @woas = Woa.where(category: params[:category])
-       # @woas = Woa.where(category: "paint")
-     else
-       @woas = Woa.all
-     end
- end  def show
-   @woa = Woa.find(params[:id])
-   @booking = Booking.new
- end  # start_book MUST be < end_book else algo won't work
- def can_book?(woa, new_start_book, new_end_book)
+  def index
+    @woas = Woa.where.not(latitude: nil, longitude: nil)
+
+    if params[:search]
+      if params[:search][:category]
+        @woas = @woas.where(category: params[:search][:category])
+      end
+      if params[:search][:location]
+        @woas = @woas.near(params[:search][:location], 30)  #résultats filtrés par le form cherch ou les categories de la page home
+      end
+    end
+
+    @hash = Gmaps4rails.build_markers(@woas) do |woa, marker|
+      marker.lat woa.latitude
+      marker.lng woa.longitude
+      # marker.infowindow render_to_string(partial: "/woas/map_box", locals: { woa: woa })
+    end
+  end
+
+  def show
+    @woa = Woa.find(params[:id])
+    @booking = Booking.new
+  end
+
+  def can_book?(woa, new_start_book, new_end_book)
    if woa.rent_start_at < new_start_book && new_end_book < woa.rent_end_at
      book_flag = false
      woa.bookings.each { | b | b.book_end_at < new_start_book \
@@ -27,21 +35,3 @@ class WoasController < ApplicationController
    end
  end
 end
-
-# simpleform for :search url: woas_path method: get do |f|
-#   f.input :date
-# end
-
-
-# link_to woas_path(search: { category: "paint" }) do
-#   "la carte de l'appart"
-# end
-
-
-#params = {search: {category: "paint"}}
-# ou
-#params = {search: {date: DateObject}}
-# ou
-#params = {}
-
-
