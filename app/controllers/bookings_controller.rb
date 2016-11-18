@@ -8,8 +8,7 @@ class BookingsController < ApplicationController
     if @booking.save
       # le flash affichera un bandeau vert et un message de succès.
       flash[:notice] = "Booking from '#{@booking.book_start_at} to '#{@booking.book_end_at} for Work of Art '#{@woa.title}' has been successfully created"
-      raise
-      redirect_to @booking
+      redirect_to woa_booking_path(@woa, @booking)
     else
       # le flash affichera un bandeau rouge et un message d'erreur.
       flash[:alert] = "Booking from '#{@booking.book_start_at} to '#{@booking.book_end_at} has not been created for Work of Art '#{@woa.title}'. Check your inputs and try again."
@@ -20,6 +19,8 @@ class BookingsController < ApplicationController
   end
 
   def show
+    @booking = Booking.find(params[:id])
+    @woa = Woa.find(params[:woa_id])
   end
 
 private
@@ -30,6 +31,5 @@ private
 
   def woa_params
     params.require(:woa_id).permit
-
   end
 end
