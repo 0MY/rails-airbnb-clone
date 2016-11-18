@@ -1,22 +1,33 @@
-<div class="container-flex">
+<!-- image du woa a afficher -->
+<!-- + un peu de bootstrap -->
+<div>
+  <h2> Réservation confirmée:</h2>
+  <br>
+</div>
+
+<div class="container">
   <ul>
-    <li> Réservation confirmée : </li>
-    <li> <%= @booking.First.name %></li>
-    <li> <%= @booking.Last_name %></li>
+    <h3> Nom du propriétaire:</h3>
+    <li><%= @booking.renter.first_name %></li>
+    <li><%= @booking.renter.last_name %></li>
+  </ul>
+  <br>
+  <ul>
+    <h3> Oeuvre d'art réservée:</h3>
+    <li><%= @woa.title %></li>
+    <li><%= @woa.description %></li>
+    <br>
+    <h3> Dates de réservation:</h3>
+  </ul>
+  <br>
+  <ul>
+    <li>de: <%= @booking.book_start_at %></li>
+    <li>à: <%= @booking.book_end_at %></li>
   </ul>
 
-  <ul>
-    <li> <%= woas.title %> <%= woas.description%></li>
-    <li> <%= booking.book_start_at%> <%= booking.book_finish_at%>
-    </li>
-  </ul>
-
-  <ul>
-    <%= link_to woas_path(search: { category: category }) do %>
-    <div class="woa-card">
-      <img src="http://placehold.it/550x300" alt="">
+  <%= link_to woas_path do %>
+    <div>
+      New search
     </div>
-      <% end %>
   <% end %>
-  </ul>
 </div>

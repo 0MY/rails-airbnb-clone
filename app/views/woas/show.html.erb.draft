@@ -36,3 +36,11 @@ ou
 params = {search: {date: DateObject}}
 ou
 params = {}
+
+
+
+------------
+
+<div class="woa-card">
+  <%= cl_image_tag @woa.photo.path, width: 200, height: 150, crop: :fill %>
+</div>
