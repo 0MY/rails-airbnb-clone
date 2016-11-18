@@ -1,4 +1,5 @@
 class WoasController < ApplicationController
+
   def index
        #test de présence du :search ou du :category renvoyé par la page home
        if params[:search]
@@ -20,7 +21,6 @@ class WoasController < ApplicationController
     @booking = Booking.new
   end
 
-  # start_book MUST be < end_book else algo won't work
   def can_book?(woa, new_start_book, new_end_book)
     if woa.rent_start_at < new_start_book && new_end_book < woa.rent_end_at
       book_flag = false

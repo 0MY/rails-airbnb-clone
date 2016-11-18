@@ -2,33 +2,27 @@
  * CSS code specific to home page
  * (margin/padding adjustments)
  * ------------------------------------- */
- .banner{
- background-position: center center;
- background-size: cover;
- background-repeat: no-repeat;
- color: white;
- text-align: center;
- height: 500px;
- display: flex;
- align-items: center;
- justify-content: center;
+
+.banner {
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;color: white;
+  text-align: center;
+  height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .woa-card {
- margin: 15px;
- width: 410px;
+  margin: 15px;
+  width: 410px;
 }
 
 .container-flex {
- display: flex;
- flex-wrap: wrap;
- justify-content: space-around;
- align-items: center;
- padding: 100px;
-}
-
-.tabs {
- background: #53443F ;
- display: flex;
- padding: 10px 10px 0 10px
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  padding: 100px;
 }
