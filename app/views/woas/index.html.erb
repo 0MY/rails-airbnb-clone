@@ -4,7 +4,7 @@
   <%= simple_form_for(:search, url: woas_path, method: :get) do |f| %>
   <%= f.input :date_start, as: :date %>
   <%= f.input :date_end, as: :date %>
-  <%= f.input :location %>
+  <%= f.input :city %>
   <%= f.submit %>
 <% end %>
 
@@ -20,7 +20,7 @@
             <div><%= woa.title %></div>
             <div><%= woa.category %></div>
             <div><%= woa.description %></div>
-            <div><%= woa.location %></div>
+            <div><%= woa.city %></div>
             <p><%= woa.price %> $</p>
           </div>
         <% end %>
