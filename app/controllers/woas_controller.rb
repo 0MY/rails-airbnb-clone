@@ -1,6 +1,5 @@
 class WoasController < ApplicationController
   def index
-
     @woas = Woa.where.not(latitude: nil, longitude: nil)
 
     if params[:search]
@@ -17,31 +16,22 @@ class WoasController < ApplicationController
       marker.lng woa.longitude
       # marker.infowindow render_to_string(partial: "/woas/map_box", locals: { woa: woa })
     end
-
-
   end
 
   def show
     @woa = Woa.find(params[:id])
     @booking = Booking.new
-
   end
+
+  def can_book?(woa, new_start_book, new_end_book)
+   if woa.rent_start_at < new_start_book && new_end_book < woa.rent_end_at
+     book_flag = false
+     woa.bookings.each { | b | b.book_end_at < new_start_book \
+                             && b.book_end_at < new_end_book \
+                             && new_start_book < b.book_start_at \
+                             && new_end_start < b.book_start_at ? book_flag = true : book_flag = false
+                       }
+     book_flag
+   end
+ end
 end
-
-# simpleform for :search url: woas_path method: get do |f|
-#   f.input :date
-# end
-
-
-# link_to woas_path(search: { category: "paint" }) do
-#   "la carte de l'appart"
-# end
-
-
-#params = {search: {category: "paint"}}
-# ou
-#params = {search: {date: DateObject}}
-# ou
-#params = {}
-
-
