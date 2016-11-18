@@ -8,6 +8,7 @@ class BookingsController < ApplicationController
     if @booking.save
       # le flash affichera un bandeau vert et un message de succès.
       flash[:notice] = "Booking from '#{@booking.book_start_at} to '#{@booking.book_end_at} for Work of Art '#{@woa.title}' has been successfully created"
+
       redirect_to @booking
     else
       # le flash affichera un bandeau rouge et un message d'erreur.
