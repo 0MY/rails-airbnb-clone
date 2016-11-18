@@ -23,7 +23,7 @@ class WoasController < ApplicationController
     @woa = Woa.find(params[:id])
     sum = 0
     @woa.bookings.each { | b | sum += b.owner_rating }
-    if @woa.bookings.count = 0
+    if @woa.bookings.count == 0
       @mean_rating = 0
     else
       @mean_rating = (sum / @woa.bookings.count).floor
