@@ -17,3 +17,22 @@
  <%= f.input :location %>
  <%= f.submit %>
 <% end %>
+
+---------------
+
+
+simpleform for :search url: woas_path method: get do |f|
+  f.input :date
+end
+
+
+link_to woas_path(search: { category: "paint" }) do
+  "la carte de l'appart"
+end
+
+
+params = {search: {category: "paint"}}
+ou
+params = {search: {date: DateObject}}
+ou
+params = {}

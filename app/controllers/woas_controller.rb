@@ -1,4 +1,5 @@
 class WoasController < ApplicationController
+
   def index
     @woas = Woa.where.not(latitude: nil, longitude: nil)
 
@@ -20,18 +21,21 @@ class WoasController < ApplicationController
 
   def show
     @woa = Woa.find(params[:id])
+    sum = 0
+    @woa.bookings.each { | b | sum += b.owner_rating }
+    @mean_rating = (sum / @woa.bookings.count).floor
     @booking = Booking.new
   end
 
   def can_book?(woa, new_start_book, new_end_book)
-   if woa.rent_start_at < new_start_book && new_end_book < woa.rent_end_at
-     book_flag = false
-     woa.bookings.each { | b | b.book_end_at < new_start_book \
-                             && b.book_end_at < new_end_book \
-                             && new_start_book < b.book_start_at \
-                             && new_end_start < b.book_start_at ? book_flag = true : book_flag = false
-                       }
-     book_flag
-   end
- end
+    if woa.rent_start_at < new_start_book && new_end_book < woa.rent_end_at
+      book_flag = false
+      woa.bookings.each { | b | b.book_end_at < new_start_book \
+                              && b.book_end_at < new_end_book \
+                              && new_start_book < b.book_start_at \
+                              && new_end_start < b.book_start_at ? book_flag = true : book_flag = false
+                        }
+      book_flag
+    end
+  end
 end

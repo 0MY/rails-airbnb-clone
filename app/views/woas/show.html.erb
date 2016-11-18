@@ -1,37 +1,52 @@
 <!-- TODO Banniere -->
+<div class = "banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url(<%= asset_path 'Montre-Dali' %>);">
+</div>
 
-<h1><%= @woa.title %></h1>
-<hr>
-<!-- TODO if exists at least 1 booking: ratings mean + ratings count -->
-<!-- TODO avatar via owner_id -->
-<hr>
-<p>Catégorie: <%= @woa.category %></p>
-<p>Prix: <%= @woa.price %></p>
-<p>Caution: <%= @woa.deposit %></p>
-<hr>
-<h2>À propos de ce logement</h2>
-<p><%= @woa.description %></p>
-<p>Où le récupérer: <%= @woa.location %></p>
-<!-- Lien type mailto: vers "Contacter l'Hôte" -->
-<hr>
-<h3>Détails de l'Oeuvre d'Art</h3>
-<p>Dimensions:
-<% case @woa.size %>
-<% when "S" %>
-  <%= "Petite taille" %>
-<% when "M" %>
-  <%= "Taille moyenne" %>
-<% when "L" %>
-  <%= "Grande taille" %>
-<% end %>
-</p>
-<!-- détails (filtres des taille, wifi, etc.) -->
-<p>À accrocher au mur: <%= @woa.hooked_on_wall ? "Oui" : "Non" %></p>
-<p>Branchements électriques: <%= @woa.needs_power ? "Oui" : "Non" %></p>
-<p>Wifi: <%= @woa.needs_wifi ? "Oui" : "Non" %></p>
-<p>Hygrometrie stable: <%= @woa.needs_hygrometry ? "Oui" : "Non" %></p>
-<p>Température stable: <%= @woa.needs_temperature ? "Oui" : "Non" %></p>
-<p>Cage de verre: <%= @woa.needs_glass ? "Oui" : "Non" %></p>
-<p>Socle: <%= @woa.needs_pedestal ? "Oui" : "Non" %></p>
-
-
+<div class = "container">
+  <div class = "row">
+    <div class = "col-lg-8">
+      <h1><%= @woa.title %></h1>
+      <hr>
+      <!-- TODO if exists at least 1 booking: ratings mean + ratings count -->
+      <p><%= @woa.bookings.count %> évaluations: <%= "*"*5 %><% @mean_rating %></p>
+      <!-- TODO avatar via owner_id -->
+      <hr>
+      <p>Catégorie: <%= @woa.category %></p>
+      <p>Prix: <%= @woa.price %></p>
+      <p>Caution: <%= @woa.deposit %></p>
+      <hr>
+      <h2>À propos de cette oeuvre d'art</h2>
+      <p><%= @woa.description %></p>
+      <p><strong> Où la récupérer: </strong><%= @woa.city %></p>
+      <!-- Lien type mailto: vers "Contacter l'Hôte" -->
+      <hr>
+      <h3>Détails et informations complémentaires</h3>
+      <p>Dimensions:
+      <% case @woa.size %>
+      <% when "S" %>
+        <%= "Petite taille" %>
+      <% when "M" %>
+        <%= "Taille moyenne" %>
+      <% when "L" %>
+        <%= "Grande taille" %>
+      <% end %>
+      </p>
+      <!-- détails (filtres des taille, wifi, etc.) -->
+      <p>À accrocher au mur: <%= @woa.hooked_on_wall ? "Oui" : "Non" %></p>
+      <p>Branchements électriques: <%= @woa.needs_power ? "Oui" : "Non" %></p>
+      <p>Wifi: <%= @woa.needs_wifi ? "Oui" : "Non" %></p>
+      <p>Hygrometrie stable: <%= @woa.needs_hygrometry ? "Oui" : "Non" %></p>
+      <p>Température stable: <%= @woa.needs_temperature ? "Oui" : "Non" %></p>
+      <p>Cage de verre: <%= @woa.needs_glass ? "Oui" : "Non" %></p>
+      <p>Socle: <%= @woa.needs_pedestal ? "Oui" : "Non" %></p>
+    </div>
+    <div class = "col-lg-4" style = "padding-top: 50px">
+      <%= simple_form_for(:book, url: woa_bookings_path(:id), method: :post) do |f| %>
+        <%= f.input :book_start, label: 'Date de départ de la réservation' %>
+        <%= f.input :book_end, label: 'Date de fin de la réservat ion'  %>
+        <%= f.input :location, label: 'Ville'  %>
+        <%= f.submit %>
+      <% end %>
+    </div>
+  </div>
+</div>
