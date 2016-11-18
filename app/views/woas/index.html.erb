@@ -2,28 +2,32 @@
   <h1>find your Work of Art</h1>
 
   <%= simple_form_for(:search, url: woas_path, method: :get) do |f| %>
-  <%= f.input :date_start, as: :date %>
-  <%= f.input :date_end, as: :date %>
-  <%= f.input :city %>
-  <%= f.submit %>
-<% end %>
+    <%= f.input :date_start, as: :date %>
+    <%= f.input :date_end, as: :date %>
+    <%= f.input :city %>
+    <%= f.submit %>
+  <% end %>
 
   <div class="row">
     <div class="col-sm-8">
-      <div class="row">
-        <% @woas.each do |woa| %>
-          <div class="card col-sm-6">
-            <div><%=link_to woa_path(id: woa.id) do%>
-              <img src="http://placehold.it/400x300" alt="">
-              <% end %>
+      <div class="fluid-container">
+        <div class="row">
+          <% @woas.each do |woa| %>
+            <div class="col-sm-4">
+              <div class="card">
+                <div><%=link_to woa_path(id: woa.id) do%>
+                 <img src=<%=asset_path "NeonElectronics.jpg"%> style= "height:50px; width:100px; alt="">
+                  <% end %>
+                </div>
+                <div><%= woa.title %></div>
+                <div><%= woa.category %></div>
+                <div><%= "#{woa.description[0..100]} ..." %></div>
+                <div><%= woa.city %></div>
+                <p><%= woa.price %> $</p>
+              </div>
             </div>
-            <div><%= woa.title %></div>
-            <div><%= woa.category %></div>
-            <div><%= woa.description %></div>
-            <div><%= woa.city %></div>
-            <p><%= woa.price %> $</p>
-          </div>
-        <% end %>
+          <% end %>
+        </div>
       </div>
     </div>
     <div class="col-sm-4">
