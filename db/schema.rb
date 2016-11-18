@@ -91,9 +91,9 @@ ActiveRecord::Schema.define(version: 20161118103150) do
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
     t.string   "category"
+    t.string   "city"
     t.float    "latitude"
     t.float    "longitude"
-    t.string   "city"
     t.index ["owner_id"], name: "index_woas_on_owner_id", using: :btree
   end
 
