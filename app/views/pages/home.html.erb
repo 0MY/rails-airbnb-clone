@@ -6,9 +6,8 @@
   </head>
 
   <body>
-
     <div class="container">
-      <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%=asset_path 'background'%>);">
+      <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%=asset_path 'background.jpg'%>);">
         <h2>ARTBnB</h2>
          <p>Louez des oeuvres d'art uniques et partagez votre passion</p>
       </div>
@@ -16,13 +15,14 @@
     </div>
 
     <div class="container">
-
+      <div class="form">
       <%= simple_form_for(:search, url: woas_path, method: :get) do |f| %>
        <%= f.input :date_start, label: "Début de la réservation", as: :date %>
        <%= f.input :date_end, label: "fin de la réservation", as: :date %>
        <%= f.input :location %>
        <%= f.submit %>
       <% end %>
+      </div>
     </div>
 
     <div class="container-flex">
