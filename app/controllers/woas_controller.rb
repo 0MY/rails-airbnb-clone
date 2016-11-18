@@ -21,14 +21,16 @@ class WoasController < ApplicationController
 
   def show
     @woa = Woa.find(params[:id])
-    sum = 0
-    @woa.bookings.each { | b | sum += b.owner_rating }
-    if @woa.bookings.count == 0
-      @mean_rating = 0
-    else
-      @mean_rating = (sum / @woa.bookings.count).floor
-    end
-      @booking = Booking.new
+    # Calcul de la moyenne: a corriger: plante si au moins une des owner_rating est nil.
+    # sum = 0
+    # if @woa.bookings.count == 0
+    #   @mean_rating = nil
+    # else
+    #   @woa.bookings.each { | b | sum += b.owner_rating }
+    #   @mean_rating = (sum / @woa.bookings.count).floor
+    # end
+    @mean_rating = 3 # a corriger en fn de ce qui est dessus
+    @booking = Booking.new
   end
 
   def can_book?(woa, new_start_book, new_end_book)
